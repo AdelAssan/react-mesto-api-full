@@ -1,7 +1,13 @@
 class Api {
-    constructor({baseUrl, headers}) {
-        this._headers = headers;
+    constructor({baseUrl}) {
         this._baseUrl = baseUrl;
+    }
+
+    get _headers() {
+        return {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        }
     }
 
     _checkResponse(res) {
@@ -13,6 +19,7 @@ class Api {
 
     getProfile() {
         return fetch(`${this._baseUrl}/users/me`, {
+            method: 'GET',
             headers: this._headers
         }).then(this._checkResponse);
 
@@ -20,6 +27,7 @@ class Api {
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
+            method: 'GET',
             headers: this._headers
         }).then(this._checkResponse);
     }
@@ -50,8 +58,8 @@ class Api {
         }).then(this._checkResponse);
     }
 
-    deleteCard(_id) {
-        return fetch(`${this._baseUrl}/cards/${_id}`, {
+    deleteCard(id) {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
             method: "DELETE",
             headers: this._headers,
         }).then(this._checkResponse);
@@ -91,9 +99,8 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-37',
+    baseUrl: 'https://api.adelassan.students.nomoredomains.sbs/',
     headers: {
-        authorization: '0ae9ad10-4d99-4e22-9605-8b12206f4940',
         'Content-Type': 'application/json'
     }
 });
