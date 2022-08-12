@@ -99,7 +99,7 @@ class Api {
 }
 
 const api = new Api({
-    baseUrl: 'https://api.adelassan.students.nomoredomains.sbs/',
+    baseUrl: 'https://api.adelassan.students.nomoredomains.sbs',
     headers: {
         'Content-Type': 'application/json'
     }
