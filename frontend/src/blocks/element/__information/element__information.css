@@ -1,7 +1,0 @@
-.element__information {
-    display: flex;
-    justify-content: space-between;
-    max-width: 240px;
-    margin: 21px auto 31px;
-    align-items: center;
-}
