@@ -16,9 +16,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(requestLogger);
 app.use(cookieParser());
 app.use(cors());
+
+mongoose.connect('mongodb://localhost:27017/mestodb');
+
+app.use(requestLogger);
 
 /*app.get('/crash-test', () => {
   setTimeout(() => {
@@ -54,7 +57,5 @@ app.use((err, req, res, next) => {
   res.status(statusCode).send({ message: statusCode === 500 ? 'На сервере произошла ошибка' : message });
   next();
 });
-
-mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.listen(PORT);
