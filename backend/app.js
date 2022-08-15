@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const { postUser, loginUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -16,7 +17,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+app.use(cookieParser());
 app.use(cors());
+
+/*app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});*/
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
