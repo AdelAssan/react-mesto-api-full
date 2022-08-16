@@ -12,7 +12,7 @@ module.exports.postUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
   } = req.body;
-  bcrypt.hash(password, 10).then((hash) => User.create({
+  return bcrypt.hash(password, 10).then((hash) => User.create({
     name, about, avatar, email, password: hash,
   }))
     .then(() => res.status(200)
@@ -74,15 +74,15 @@ module.exports.searchUser = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {
       if (!user) {
-        return next(new NotFoundError('Пользователь не найден'));
+        throw new NotFoundError('Пользователь не найден');
       }
       return res.send({ data: user });
     })
     .catch((error) => {
       if (error.name === 'CastError') {
-        next(new ErrorData('Переданы неккоректные данные'));
+        return next(new ErrorData('Переданы неккоректные данные'));
       }
-      next(error);
+      return next(error);
     });
 };
 

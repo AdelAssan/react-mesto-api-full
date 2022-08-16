@@ -6,7 +6,7 @@ const WrongAction = require('../errors/WrongAction');
 module.exports.getCards = (req, res, next) => {
   Cards.find({})
     .populate('owner')
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch((error) => next(error));
 };
 
@@ -53,7 +53,7 @@ module.exports.likeCard = (req, res, next) => {
       next(new NotFoundError('Карточка не найдена'));
       return;
     }
-    res.send({ data: card });
+    res.send(card);
   })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -74,7 +74,7 @@ module.exports.dislikeCard = (req, res, next) => {
       next(new NotFoundError('Карточка не найдена'));
       return;
     }
-    res.send({ data: card });
+    res.send(card);
   })
     .catch((error) => {
       if (error.name === 'CastError') {
