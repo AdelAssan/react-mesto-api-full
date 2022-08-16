@@ -17,9 +17,7 @@ module.exports.postUser = (req, res, next) => {
   }))
     .then(() => res.status(200)
       .send({
-        data: {
           name, about, avatar, email,
-        },
       }))
     .catch((error) => {
       if (error.name === 'ValidationError') {
@@ -65,7 +63,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send( user ))
     .catch((error) => next(error));
 };
 
@@ -97,7 +95,7 @@ module.exports.updateProfile = (req, res, next) => {
         next(new NotFoundError('Пользователь не найден'));
         return;
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((error) => {
       if (error.name === 'ValidationError') {
