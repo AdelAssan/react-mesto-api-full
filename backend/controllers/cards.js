@@ -31,7 +31,7 @@ module.exports.deleteCard = (req, res, next) => {
       } else if (!card.owner.equals(req.user._id)) {
         throw new WrongAction('Чужая карточка');
       } else {
-        return card.remove().then(() => res.status(200).send({ data: card }));
+        return card.remove().then(() => res.status(200).send(card));
       }
     })
     .catch((error) => {
@@ -50,10 +50,9 @@ module.exports.likeCard = (req, res, next) => {
     { new: true },
   ).then((card) => {
     if (!card) {
-      next(new NotFoundError('Карточка не найдена'));
-      return;
+      throw new NotFoundError('Карточка не найдена');
     }
-    res.send(card);
+    return res.send(card);
   })
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -71,10 +70,9 @@ module.exports.dislikeCard = (req, res, next) => {
     { new: true },
   ).then((card) => {
     if (!card) {
-      next(new NotFoundError('Карточка не найдена'));
-      return;
+      throw new NotFoundError('Карточка не найдена');
     }
-    res.send(card);
+    return res.send(card);
   })
     .catch((error) => {
       if (error.name === 'CastError') {
