@@ -39,7 +39,7 @@ module.exports.deleteCard = (req, res, next) => {
         next(new ErrorData('Переданы неккоректные данные'));
         return;
       }
-      next(error);
+      return next(error);
     });
 };
 
@@ -59,7 +59,7 @@ module.exports.likeCard = (req, res, next) => {
         next(new ErrorData('Переданы неккоректные данные'));
         return;
       }
-      next(error);
+      return next(error);
     });
 };
 
@@ -79,6 +79,6 @@ module.exports.dislikeCard = (req, res, next) => {
         next(new ErrorData('Переданы неккоректные данные'));
         return;
       }
-      next(error);
+     return next(error);
     });
 };
