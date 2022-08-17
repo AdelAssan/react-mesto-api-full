@@ -1,0 +1,16 @@
+.header__menu {
+    display: none;
+    text-align: center;
+    margin: 0 auto;
+    padding: 4px 0 31px 0;
+}
+
+@media screen and (min-width: 600px) {
+    .header__menu {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

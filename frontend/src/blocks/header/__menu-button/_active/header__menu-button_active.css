@@ -1,0 +1,8 @@
+.header__menu-button_active{
+    background-image: url("../../../../images/menu-close.svg");
+    margin-top: 10px;
+}
+
+.header__menu-button_active::after .header_active{
+    flex-direction: column-reverse;
+}

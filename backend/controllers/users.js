@@ -28,7 +28,7 @@ module.exports.postUser = (req, res, next) => {
         next(new Conflict('Пользователь с таким email уже создан'));
         return;
       }
-      next(error);
+      return next(error);
     });
 };
 
