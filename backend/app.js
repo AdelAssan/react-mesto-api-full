@@ -8,6 +8,7 @@ const { postUser, loginUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const serverError = require('./middlewares/serverError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -50,10 +51,6 @@ app.use('*', auth, (_, res, next) => next(new NotFoundError('Страница н
 app.use(errorLogger);
 app.use(errors());
 
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  res.status(statusCode).send({ message: statusCode === 500 ? 'На сервере произошла ошибка' : message });
-  next();
-});
+app.use(serverError);
 
 app.listen(PORT);
