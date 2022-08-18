@@ -5,4 +5,8 @@
 
 https://adelassan.nomoredomains.sbs/
 
+Домен сервера:
+
+api.adelassan.students.nomoredomains.sbs
+
 IP: 62.84.118.145

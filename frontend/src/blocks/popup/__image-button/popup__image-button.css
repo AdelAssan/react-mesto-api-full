@@ -1,9 +1,0 @@
-.popup__image-button {
-    margin-left: 100%;
-}
-
-@media screen and (max-width: 540px) {
-    .popup__image-button {
-        margin-left: 88%;
-    }
-}

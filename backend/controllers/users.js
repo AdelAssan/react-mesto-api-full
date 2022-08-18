@@ -20,15 +20,15 @@ module.exports.postUser = (req, res, next) => {
           name, about, avatar, email,
       }))
     .catch((error) => {
+        if (error.code === 11000) {
+            next(new Conflict('Пользователь с таким email уже создан'));
+            return;
+        }
       if (error.name === 'ValidationError') {
         next(new ErrorData('Переданы неккоректные данные'));
         return;
       }
-      if (error.code === 11000) {
-        next(new Conflict('Пользователь с таким email уже создан'));
-        return;
-      }
-      return next(error);
+      next(error);
     });
 };
 
@@ -79,7 +79,7 @@ module.exports.searchUser = (req, res, next) => {
       if (error.name === 'CastError') {
         return next(new ErrorData('Переданы неккоректные данные'));
       }
-      return next(error);
+      next(error);
     });
 };
 
