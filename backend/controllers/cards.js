@@ -79,6 +79,6 @@ module.exports.dislikeCard = (req, res, next) => {
         next(new ErrorData('Переданы неккоректные данные'));
         return;
       }
-     next(error);
+      next(error);
     });
 };
