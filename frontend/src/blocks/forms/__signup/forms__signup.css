@@ -1,0 +1,9 @@
+.forms__signup {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}

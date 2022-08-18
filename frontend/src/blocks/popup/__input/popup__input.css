@@ -1,0 +1,27 @@
+.popup__input {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    padding: 0 0 11px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.popup__input.popup__input_type_error {
+    border-color: red;
+}
+
+.popup__input:first-of-type {
+    margin-top: 35px;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__input:first-of-type {
+        margin-top: 62px;
+    }
+}

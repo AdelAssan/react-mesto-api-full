@@ -1,0 +1,12 @@
+.popup__close-button {
+    min-width: 510px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__close-button {
+        min-width: 282px;
+    }
+}
+

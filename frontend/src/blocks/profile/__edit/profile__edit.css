@@ -1,0 +1,11 @@
+.profile__edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+@media screen and (max-width: 700px) {
+    .profile__edit {
+        justify-content: center;
+    }
+}
